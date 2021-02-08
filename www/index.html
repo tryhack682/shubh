@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+     <script type="text/javascript">
+function sample()
+          {
+                     var db = openDatabase('mydatabase', '1.0', 'Test DB', 2 * 1024 * 1024);
+      var        a=document.getElementById("t1").value;
+      var        b=document.getElementById("t2").value;
+        db.transaction(function (tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (id unique, name)');
+          //  tx.executeSql('INSERT INTO EMP (id, name) VALUES (899, "paresh")');
+              tx.executeSql('INSERT INTO EMPLOYEE VALUES (?,?)', [a, b]);
+         });
+              alert("record inserted ")
+          }
+     </script>
+  </head>
+   <body>
+   <h1>simple exampele to insert record</h1>
+      <input type="text" id=t1>
+       <input type="text" id=t2>
+       <button onclick="sample();">click to insert</button>
+   </body>
+
+</html>
+
